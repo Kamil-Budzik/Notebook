@@ -1,10 +1,12 @@
 import React from 'react';
-
 import { AiOutlinePlus } from 'react-icons/ai';
+
+import Input from '../Input/Input';
 
 const Sidebar = () => {
   return (
     <aside>
+      <Input />
       <div className="flex items-center justify-between pb-8">
         <h1 className="text-4xl font-bold">All Notes</h1>
         <span>
