@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import mockedData from '../../data/mockedData';
@@ -12,14 +13,22 @@ const Sidebar = () => {
     <aside>
       <Input />
       <div className="flex items-center justify-between pb-8">
-        <h1 className="text-4xl font-bold">All Notes</h1>
-        <span>
-          <AiOutlinePlus className="cursor-pointer text-4xl transition hover:text-sky-500" />
-        </span>
+        <Link href="/">
+          <a>
+            <h1 className="text-4xl font-bold transition hover:text-sky-500">
+              All Notes
+            </h1>
+          </a>
+        </Link>
+        <Link href="/note-manager">
+          <a>
+            <AiOutlinePlus className="cursor-pointer text-4xl transition hover:text-sky-500" />
+          </a>
+        </Link>
       </div>
       <ul>
         {links?.map(({ id, title }) => (
-          <Navlink id={id} content={title} />
+          <Navlink key={id} id={id} content={title} />
         ))}
       </ul>
     </aside>
