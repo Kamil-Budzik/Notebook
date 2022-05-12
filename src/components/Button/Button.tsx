@@ -6,7 +6,8 @@ interface Props {
 }
 
 const Button = ({ children, variant }: Props) => {
-  const basicProperties = 'py-3 px-6 text-lg text-white transition';
+  const basicProperties =
+    'py-3 px-10 text-2xl text-white transition rounded-md font-semibold';
 
   if (variant === 'red') {
     return (
