@@ -1,9 +1,13 @@
 import React from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
+import mockedData from '../../data/mockedData';
 
 import Input from '../Input/Input';
+import Navlink from '../Navlink/Navlink';
 
 const Sidebar = () => {
+  const links = mockedData.map(({ title, id }) => ({ id, title }));
+
   return (
     <aside>
       <Input />
@@ -14,18 +18,9 @@ const Sidebar = () => {
         </span>
       </div>
       <ul>
-        <li className="cursor-pointer py-2 text-lg font-semibold transition hover:text-sky-500">
-          Drunken driving is a serious problem.
-        </li>
-        <li className="cursor-pointer py-2 text-lg font-semibold transition hover:text-sky-500">
-          Drunken driving is a serious problem.
-        </li>
-        <li className="cursor-pointer py-2 text-lg font-semibold transition hover:text-sky-500">
-          Drunken driving is a serious problem.
-        </li>
-        <li className="cursor-pointer py-2 text-lg font-semibold transition hover:text-sky-500">
-          Drunken driving is a serious problem.
-        </li>
+        {links?.map(({ id, title }) => (
+          <Navlink id={id} content={title} />
+        ))}
       </ul>
     </aside>
   );
