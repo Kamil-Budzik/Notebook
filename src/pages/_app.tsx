@@ -4,11 +4,12 @@ import { Provider } from 'react-redux';
 import { store } from '../store/store';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const AnyComponent = Component as any;
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <AnyComponent {...pageProps} />
     </Provider>
   );
 }
- 
+
 export default MyApp;
