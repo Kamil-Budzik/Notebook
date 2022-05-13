@@ -1,12 +1,13 @@
 import React from 'react';
 import { BsDot } from 'react-icons/bs';
+import dateFormat from 'dateformat';
 
 import Button from '../Button/Button';
 
 interface Props {
   title: string;
   category: string;
-  date: string;
+  date: Date;
   content: string;
 }
 
@@ -20,7 +21,7 @@ const NoteSection = ({ title, category, date, content }: Props) => {
           <span className="text-2xl">
             <BsDot />
           </span>
-          <p>{date}</p>
+          <p>{dateFormat(date, 'dd.mm.yy')}</p>
         </div>
       </header>
       <article className="mb-24">
