@@ -1,18 +1,37 @@
 import React from 'react';
-import Layout from '../components/Layout/Layout';
+import Button from '../components/Button/Button';
 
 const HomePage = () => {
   return (
-    <Layout>
-      <section className='px-12 md:w-3/5'>
-        <header>
-          <h1 className='text-4xl font-bold'>Welcome</h1>
-        </header>
-        <article className='my-24 text-2xl font-semibold'>
-          <p>I will add app introduction/documentation here</p>
-        </article>
+    <div className="flex min-h-screen w-full items-center justify-center">
+      <section>
+        <div className="">
+          <form className="flex min-h-[500px] flex-col items-center justify-evenly rounded px-24 shadow">
+            <div>
+              <div className="mb-6 flex flex-col">
+                <label htmlFor="signup-email">Email</label>
+                <input
+                  className="mb-5 w-full rounded border-2 border-gray-600 p-1 shadow-sm outline-sky-500"
+                  type="email"
+                  id="signup-email"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="password">Password</label>
+                <input
+                  className="mb-5 w-full rounded border-2 border-gray-600 p-1 shadow-sm outline-sky-500"
+                  type="password"
+                />
+              </div>
+            </div>
+            <Button submit>Log in</Button>
+            <Button submit variant="yellow" small>
+              Sign up
+            </Button>
+          </form>
+        </div>
       </section>
-    </Layout>
+    </div>
   );
 };
 
