@@ -1,30 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BsDot } from 'react-icons/bs';
-import { Formik, Field, Form } from 'formik';
+import { Field, Form, Formik } from 'formik';
 
 import Button from '../components/Button/Button';
 import Layout from '../components/Layout/Layout';
 import DatePickerField from '../components/DatePickerField/DatePickerField';
-
-interface Values {
-  title: string;
-  category: string;
-  date: Date;
-  content: string;
-}
+import { addNote, Note } from '../store/note';
+import { useAppDispatch } from '../store/hooks';
 
 const NoteManager = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <Layout>
       <Formik
         initialValues={{
+          id: Math.floor(Math.random() * 1000).toString(),
           title: '',
           category: '',
           date: new Date(),
           content: '',
         }}
-        onSubmit={(values: Values, { resetForm }) => {
-          console.log(values);
+        onSubmit={(values: Note, { resetForm }) => {
+          dispatch(addNote({ ...values }));
           resetForm();
         }}
       >
