@@ -1,20 +1,30 @@
 import React from 'react';
 
-interface Props extends React.HTMLAttributes<HTMLButtonElement> {
-  variant?: 'sky' | 'red';
+interface Props {
+  variant?: 'sky' | 'red' | 'yellow';
   children: any;
+  small?: boolean;
+  submit?: boolean;
 }
 
-const Button = ({ children, variant, ...props }: Props) => {
+const Button = ({ children, variant, small, submit }: Props) => {
+  let basicStyles = 'rounded-md font-semibold text-white transition ';
+
+  if (small) {
+    basicStyles += 'py-2 px-6 text-lg ';
+  } else {
+    basicStyles += 'py-3 px-10 text-2xl ';
+  }
+  if (variant === 'red') {
+    basicStyles += 'bg-rose-600 hover:bg-rose-700';
+  } else if (variant === 'yellow') {
+    basicStyles += 'bg-yellow-300 hover:bg-yellow-400';
+  } else {
+    basicStyles += 'bg-sky-500 hover:bg-cyan-600';
+  }
+
   return (
-    <button
-      className={`rounded-md py-3 px-10 text-2xl font-semibold text-white transition ${
-        variant === 'red'
-          ? 'bg-rose-600 hover:bg-rose-700'
-          : 'bg-sky-500 hover:bg-cyan-600'
-      }`}
-      {...props}
-    >
+    <button className={basicStyles} type={submit ? 'submit' : 'button'}>
       {children}
     </button>
   );

@@ -58,7 +58,7 @@ const NoteManager = () => {
               name="content"
             />
           </div>
-          <Button type="submit">Add</Button>
+          <Button submit>Add</Button>
         </Form>
       </Formik>
     </Layout>
