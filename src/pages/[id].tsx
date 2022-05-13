@@ -2,13 +2,13 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import Layout from '../components/Layout/Layout';
 import NoteSection from '../components/NoteSection/NoteSection';
-import mockedData from '../data/mockedData';
+import { useAppSelector } from '../store/hooks';
 
 const NoteDisplay = () => {
   const router = useRouter();
   const { id } = router.query;
-
-  const note = mockedData.filter((item) => item.id === id)[0];
+  const { notes } = useAppSelector((state) => state.notes);
+  const note = notes.filter((item) => item.id === id)[0];
 
   return (
     <Layout>

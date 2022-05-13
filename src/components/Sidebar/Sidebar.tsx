@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
-import mockedData from '../../data/mockedData';
 
 import Input from '../Input/Input';
 import Navlink from '../Navlink/Navlink';
 
+import { useAppSelector } from '../../store/hooks';
+
 const Sidebar = () => {
-  const links = mockedData.map(({ title, id }) => ({ id, title }));
+  const { notes } = useAppSelector((state) => state.notes);
 
   return (
     <aside>
@@ -27,7 +28,7 @@ const Sidebar = () => {
         </Link>
       </div>
       <ul>
-        {links?.map(({ id, title }) => (
+        {notes.map(({ id, title }) => (
           <Navlink key={id} id={id} content={title} />
         ))}
       </ul>
